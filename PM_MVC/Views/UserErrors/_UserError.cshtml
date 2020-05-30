@@ -19,4 +19,7 @@
     <p>
         @Model.Notes
     </p>
+    <div class="details-link">
+        <a  asp-controller="UserErrors" asp-action="Details" asp-route-userErrorId=@Model.UserErrorId>Details</a>
+    </div>
 </div>

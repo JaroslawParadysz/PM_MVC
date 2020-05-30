@@ -40,5 +40,17 @@ namespace PM_MVC.Controllers
             ViewData["Hello"] = "Hello Bro!";
             return View(_userErrorViewModels);
         }
+
+        public IActionResult Details(Guid userErrorId)
+        {
+            UserErrorViewModel ue = new UserErrorViewModel()
+            {
+                UserErrorId = userErrorId,
+                CreatedTime = DateTime.Now.AddDays(-3),
+                Notes = "Hello Bro"
+            };
+
+            return View(ue);
+        }
     }
 }
