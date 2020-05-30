@@ -1,0 +1,27 @@
+﻿@model PM_MVC.ViewModels.UserErrorViewModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+<div class="user-error-container">
+    <p>
+        User Error Id:
+    </p>
+    <p>
+        @Model.UserErrorId
+    </p>
+    <p>
+        Created time:
+    </p>
+    <p>
+        @Model.CreatedTime
+    </p>
+    <p>
+        Notes:
+    </p>
+    <p>
+        @Model.Notes
+    </p>
+</div>
