@@ -75,6 +75,10 @@ body {
     flex-wrap: wrap;
 }
 
+.user-error-container > label {
+    flex: 1 0 20%;
+}
+
 .user-error-container > p {
-    flex: 1 0 50%;
+    flex: 1 0 70%;
 }
