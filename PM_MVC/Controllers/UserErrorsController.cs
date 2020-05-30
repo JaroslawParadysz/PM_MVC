@@ -38,7 +38,7 @@ namespace PM_MVC.Controllers
         public IActionResult Index()
         {
             ViewData["Hello"] = "Hello Bro!";
-            return View(_userErrorViewModels[0]);
+            return View(_userErrorViewModels);
         }
     }
 }

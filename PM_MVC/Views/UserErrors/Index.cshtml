@@ -1,31 +1,12 @@
-﻿@model PM_MVC.ViewModels.UserErrorViewModel
+﻿@model IEnumerable<PM_MVC.ViewModels.UserErrorViewModel>
 
 @{
     ViewData["Title"] = "Index";
 }
 
 <h1>Index</h1>
-<div class="user-error-container">
-    <label>
-        User Error Id:
-    </label>
-    <p>
-        @Model.UserErrorId
-    </p>
-    <label>
-        Created time:
-    </label>
-    <p>
-        @Model.CreatedTime
-    </p>
-    <label>
-        Notes:
-    </label>
-    <p>
-        @Model.Notes
-    </p>
-</div>
-
-<h2>
-    @ViewData["Hello"]
-</h2>
+@foreach (var error in Model)
+{
+    @await Html.PartialAsync("_UserError", error,
+            new ViewDataDictionary(ViewData));
+}
