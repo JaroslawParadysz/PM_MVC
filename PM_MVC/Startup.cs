@@ -1,13 +1,20 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Mvc.Formatters;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Net.Http.Headers;
+using PM_MVC.OutputFormatters;
+using PM_MVC.ViewModels;
 
 namespace PM_MVC
 {
@@ -23,7 +30,10 @@ namespace PM_MVC
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllersWithViews(options => options.RespectBrowserAcceptHeader = true)
+            services.AddControllersWithViews(options => {
+                options.RespectBrowserAcceptHeader = true;
+                options.OutputFormatters.Insert(0, new ProductPlainTextOutputFormatter());
+            })
                 .AddXmlSerializerFormatters();
         }
 
