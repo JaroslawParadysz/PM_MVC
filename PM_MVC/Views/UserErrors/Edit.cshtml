@@ -1,0 +1,12 @@
+﻿@model PM_MVC.ViewModels.UserErrorViewModel
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+<form action="edit?userErrorId=@Model.UserErrorId" method="post">
+    <input name="UserErrorId" value=@Model.UserErrorId hidden="hidden"/>
+    <input name="CreatedTime" type="datetime" value=@Model.CreatedTime.ToString() /><br/>
+    <textarea name="Notes" cols="50" rows="4">@Model.Notes</textarea>
+    <input type="submit" value="Submit" />
+</form>

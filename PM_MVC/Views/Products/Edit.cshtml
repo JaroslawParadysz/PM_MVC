@@ -1,0 +1,13 @@
+﻿@model PM_MVC.ViewModels.ProductViewModel
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<form action="edit" method="post">
+    <span>Name</span><input type="text" value=@Model.Name name="Name" />
+    <span>Color:</span><input type="text" value=@Model.Color name="Color"/>
+    <span>Size:</span><input type="text" value=@Model.Size name="Size"/>
+    <input type="submit" value="submit" />
+</form>

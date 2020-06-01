@@ -1,0 +1,16 @@
+﻿@model PM_MVC.ViewModels.ProductViewModel
+
+    <div class="product-container">
+        <div>
+            <span>Name: </span><span>@Model.Name</span>
+        </div>
+        <div>
+            <span>Color: </span><span>@Model.Color</span>
+        </div>
+        <div>
+            <span>Size: </span><span>@Model.Size</span>
+        </div>
+        <div>
+            <a asp-controller="Products" asp-action="Edit" asp-route-productId="123">Edit</a>
+        </div>
+    </div>

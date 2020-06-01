@@ -1,0 +1,13 @@
+﻿@model IEnumerable<PM_MVC.ViewModels.ProductViewModel>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+@foreach(var p in Model)
+{
+    @await Html.PartialAsync("_Product", p);
+}
+
+

@@ -52,5 +52,25 @@ namespace PM_MVC.Controllers
 
             return View(ue);
         }
+
+        public IActionResult Edit(Guid userErrorId)
+        {
+            UserErrorViewModel ue = new UserErrorViewModel()
+            {
+                UserErrorId = userErrorId,
+                CreatedTime = DateTime.Now.AddDays(-3),
+                Notes = "Hello Bro"
+            };
+
+            return View(ue);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(Guid userErrorId, UserErrorViewModel ue)
+        {
+            _userErrorViewModels[0] = ue;
+            return View("Index", _userErrorViewModels);
+
+        }
     }
 }
