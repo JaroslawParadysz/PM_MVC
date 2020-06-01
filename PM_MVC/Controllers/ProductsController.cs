@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text.Json;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
+using PM_MVC.Filters.ActionFilters;
 using PM_MVC.ViewModels;
 
 namespace PM_MVC.Controllers
 {
+    [HeaderActionFilter]
     public class ProductsController : Controller
     {
         IList<ProductViewModel> products = new List<ProductViewModel>
