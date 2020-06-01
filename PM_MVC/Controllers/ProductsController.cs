@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using PM_MVC.ViewModels;
@@ -53,6 +54,12 @@ namespace PM_MVC.Controllers
         public IActionResult Edit(int productId, ProductViewModel model)
         {
             return Redirect("/");
+        }
+
+        [HttpGet(Name = "ContentNegotiation")]
+        public ObjectResult ContentNegotiation()
+        {
+            return new ObjectResult(products[0]);
         }
     }
 }
