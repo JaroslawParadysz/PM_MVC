@@ -14,6 +14,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Net.Http.Headers;
 using PM_MVC.OutputFormatters;
+using PM_MVC.Utils;
 using PM_MVC.ViewModels;
 
 namespace PM_MVC
@@ -30,11 +31,24 @@ namespace PM_MVC
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDistributedMemoryCache();
+            services.AddSession(options => 
+            {
+                options.IdleTimeout = TimeSpan.FromSeconds(10);
+                options.Cookie.HttpOnly = true;
+                options.Cookie.Name = ".PM_MVC.Session";
+                options.Cookie.IsEssential = true;
+            });
+
+            services.AddScoped(typeof(Filters.ActionFilters.NewActionFilter));
+
             services.AddControllersWithViews(options => {
                 options.RespectBrowserAcceptHeader = true;
                 options.OutputFormatters.Insert(0, new ProductPlainTextOutputFormatter());
             })
                 .AddXmlSerializerFormatters();
+
+            services.AddScoped<ITraceUtils, TraceUtils>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -56,6 +70,8 @@ namespace PM_MVC
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseSession();
 
             app.UseEndpoints(endpoints =>
             {

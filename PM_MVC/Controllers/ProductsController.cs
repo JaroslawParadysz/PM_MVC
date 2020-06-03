@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using PM_MVC.Filters.ActionFilters;
 using PM_MVC.Filters.ExceptionFilters;
+using PM_MVC.Filters.ResultFilters;
 using PM_MVC.ViewModels;
 
 namespace PM_MVC.Controllers
 {
-    [HeaderActionFilter]
-    [TypeFilter(typeof(ProductCustomExceptionFilter))]
+    [ServiceFilter(typeof(NewActionFilter))]
     public class ProductsController : Controller
     {
         IList<ProductViewModel> products = new List<ProductViewModel>
@@ -60,6 +60,7 @@ namespace PM_MVC.Controllers
         [HttpGet(Name = "ContentNegotiation")]
         public ObjectResult ContentNegotiation()
         {
+            //var session = HttpContext.Session;
             return new ObjectResult(products[0]);
         }
 

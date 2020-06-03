@@ -1,13 +1,10 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.Net.Http.Headers;
-using Newtonsoft.Json;
 using PM_MVC.ViewModels;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Dynamic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace PM_MVC.OutputFormatters
