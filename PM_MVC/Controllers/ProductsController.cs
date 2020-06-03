@@ -60,14 +60,14 @@ namespace PM_MVC.Controllers
         [HttpGet(Name = "ContentNegotiation")]
         public ObjectResult ContentNegotiation()
         {
-            //var session = HttpContext.Session;
             return new ObjectResult(products[0]);
         }
 
         [HttpGet(Name = "FailAction")]
-        public ObjectResult FailAction()
+        public IActionResult RedirectToIndex()
         {
-            throw new InvalidOperationException("My exception!");
+            TempData["Test"] = "Added by RedirectToIndex action";
+            return RedirectToAction("Index");
         }
     }
 }
